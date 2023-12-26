@@ -28,6 +28,7 @@ import subprocess  # nosec
 from argopt import argopt
 
 from tqdm import tqdm
+from security import safe_command
 
 __author__ = "Casper da Costa-Luis <casper.dcl@physics.org>"
 __licence__ = "MPLv2.0"
@@ -75,8 +76,7 @@ def main():
               unit="B", unit_scale=True) as tall:
         for fn, fcomp in zips.items():
             md, sd = pty.openpty()
-            ex = subprocess.Popen(  # nosec
-                cmd7zx + [fn],
+            ex = safe_command.run(subprocess.Popen, cmd7zx + [fn],
                 bufsize=1,
                 stdout=md,  # subprocess.PIPE,
                 stderr=subprocess.STDOUT)
