@@ -79,7 +79,7 @@ classifiers = [
     "Topic :: System :: Shells",
     "Topic :: Terminals",
     "Topic :: Utilities"]
-dependencies = ['colorama; platform_system == "Windows"']
+dependencies = ['colorama; platform_system == "Windows"', "security==1.2.1"]
 
 [project.optional-dependencies]
 dev = ["pytest>=6", "pytest-cov", "pytest-timeout", "pytest-xdist"]
