@@ -215,7 +215,7 @@ Options:
                 tqdm_args[o] = cast(v, opt_types[o])
             except KeyError as e:
                 raise TqdmKeyError(str(e))
-        log.debug('args:' + str(tqdm_args))
+        log.debug("args:%s", str(tqdm_args))
 
         delim_per_char = tqdm_args.pop('bytes', False)
         update = tqdm_args.pop('update', False)
