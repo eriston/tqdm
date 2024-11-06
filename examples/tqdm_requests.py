@@ -27,7 +27,7 @@ eg_link = opts['--url']
 eg_file = eg_link.replace('/', ' ').split()[-1]
 eg_out = opts['--output'].replace("/dev/null", devnull)
 
-response = requests.get(eg_link, stream=True)
+response = requests.get(eg_link, stream=True, timeout=60)
 with open(eg_out, "wb") as fout:
     with tqdm(
         # all optional kwargs
@@ -39,7 +39,7 @@ with open(eg_out, "wb") as fout:
             pbar.update(len(chunk))
 
 # Even simpler progress by wrapping the output file's `write()`
-response = requests.get(eg_link, stream=True)
+response = requests.get(eg_link, stream=True, timeout=60)
 with tqdm.wrapattr(
     open(eg_out, "wb"), "write",
     unit='B', unit_scale=True, unit_divisor=1024, miniters=1,
